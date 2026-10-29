@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cw-El Client – launcher Minecrafta</title>
+<meta name="description" content="Cw-El Client to launcher Minecrafta z własnym ekranem startowym w grze, modami z Modrinth i logowaniem Microsoft. Java pobiera się sama.">
+<meta name="theme-color" content="#070816">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Pixelify+Sans:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i="skip">Przejdź do treści</a>
+
+<header class="top">
+  <a class="brand" href="#" aria-label="Cw-El Client"><img src="logo.png" alt="" width="34" height="34"><b>Cw-El Client</b></a>
+  <nav aria-label="Nawigacja">
+    <a href="#launcher" data-i="navLauncher">Launcher</a>
+    <a href="#moduly" data-i="navMods">W grze</a>
+    <a href="#spolecznosc" data-i="navCommunity">Społeczność</a>
+    <a href="#faq" data-i="navFaq">FAQ</a>
+  </nav>
+  <div class="tools">
+    <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div>
+    <a class="btn ghost" id="dc-top" href="https://dsc.gg/cw-elclient" rel="noopener">Discord</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="hero-text">
+      <h1 data-i="h1">Minecraft w twoim stylu, od ekranu startowego.</h1>
+      <p class="lead" data-i="lead">Cw-El Client to launcher z własnym ekranem startowym w grze, modami z Modrinth i logowaniem Microsoft. Java pobiera się sama, a mod Cw-El buduje się przy pierwszym starcie.</p>
+      <div class="cta">
+        <a class="btn main" id="dl" href="#pobierz" data-i="download">Pobierz launcher</a>
+        <a class="btn ghost" href="#moduly" data-i="seeGame">Zobacz, jak wygląda w grze</a>
+      </div>
+      <p class="fine" data-i="fine">Windows 10 i nowszy. Działa z kontami Microsoft i offline.</p>
+    </div>
+    <figure class="screen">
+      <canvas id="title" width="320" height="200" aria-label="Ekran startowy Cw-El w grze" role="img"></canvas>
+      <figcaption data-i="cap">Tak wygląda ekran startowy z moda. Najedź na menu, a logo kliknij pięć razy.</figcaption>
+    </figure>
+  </section>
+
+  <section class="band" id="launcher" aria-labelledby="t-launcher">
+    <div class="side">
+      <h2 id="t-launcher" data-i="launcherT">Launcher, który robi robotę za ciebie</h2>
+      <p data-i="launcherP">Wszystko, czego potrzebujesz przed kliknięciem „Graj”, jest w jednym oknie. Resztą zajmuje się launcher.</p>
+    </div>
+    <dl class="rows">
+      <div><dt data-i="f1t">Logowanie Microsoft</dt><dd data-i="f1d">Logujesz się w oknie launchera. Token jest zapisany zaszyfrowany przez system, a hasła nikt nie widzi. Konta offline też działają.</dd></div>
+      <div><dt data-i="f2t">Instancje</dt><dd data-i="f2d">Osobne światy, mody i ustawienia dla każdej wersji. Duplikujesz, zmieniasz ikonę i kolor, ustawiasz serwer do automatycznego dołączania.</dd></div>
+      <div><dt data-i="f3t">Fabric, Forge i NeoForge</dt><dd data-i="f3d">Loader instaluje się sam. Fabric API dochodzi automatycznie, a jak plik gry się uszkodzi, launcher go naprawi.</dd></div>
+      <div><dt data-i="f4t">Mody z Modrinth</dt><dd data-i="f4d">Popularne mody na stronach, bez szukania na ślepo. Szukajka jest obok, gdy wiesz, czego chcesz.</dd></div>
+      <div><dt data-i="f5t">Java bez zachodu</dt><dd data-i="f5d">Wersja Javy dobiera się do Minecrafta i pobiera sama. Własną ścieżkę możesz wskazać w ustawieniach.</dd></div>
+      <div><dt data-i="f6t">Skin w 3D i ustawienia pod ciebie</dt><dd data-i="f6d">Obracasz swoją postać na stronie głównej. Wybierasz kolor akcentu, RAM, argumenty JVM i rozmiar okna.</dd></div>
+    </dl>
+  </section>
+
+  <section class="band tinted" id="moduly" aria-labelledby="t-mods">
+    <div class="side">
+      <h2 id="t-mods" data-i="modsT">Mod Cw-El w grze</h2>
+      <p data-i="modsP">Menu otwierasz prawym Shiftem. Każdy moduł włączasz i wyłączasz osobno. Spróbuj tutaj, po prawej widać efekt.</p>
+      <ul class="mods" id="mods"></ul>
+    </div>
+    <div class="hud" id="hud" aria-live="polite">
+      <div class="hud-sky"></div>
+      <div class="hud-ground"></div>
+      <div class="hud-l" id="hud-l"></div>
+      <div class="hud-keys" id="hud-keys" hidden><i>W</i><i>A</i><i>S</i><i>D</i></div>
+      <div class="hud-r" id="hud-r" hidden></div>
+      <div class="hud-lyrics" id="hud-ly" hidden></div>
+    </div>
+  </section>
+
+  <section class="band" id="spolecznosc" aria-labelledby="t-com">
+    <div class="side">
+      <h2 id="t-com" data-i="comT">Gracze z Cw-El widzą się nawzajem</h2>
+      <p data-i="comP">Jeśli ktoś gra przez Cw-El Launcher, ma gwiazdkę przy nicku nad głową i na liście graczy. Nie trzeba niczego ustawiać.</p>
+    </div>
+    <div class="community">
+      <div class="tab" aria-hidden="true">
+        <b class="tab-h" data-i="tabH">Lista graczy</b>
+        <span><s>★</s> Eksii_YT</span><span>Steve_2013</span><span><s>★</s> nyxden_ofc</span><span>Kopacz</span>
+      </div>
+      <ul class="plain">
+        <li data-i="c1">Konto Discord łączysz w ustawieniach launchera. Launcher dostaje tylko twój nick i ID.</li>
+        <li data-i="c2">Ogłoszenia z serwera Discord pojawiają się jako pasek u góry launchera.</li>
+        <li data-i="c3">Aktualizację instalujesz kodem z Discorda. Wpisujesz go raz, a launcher sprawdza nowe wydania sam.</li>
+        <li data-i="c4">Mod buduje się sam dla wersji 1.19.4, 1.20.1, 1.20.4, 1.21.1, 1.21.4 i 1.21.8.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band tinted" id="pobierz" aria-labelledby="t-dl">
+    <div class="side">
+      <h2 id="t-dl" data-i="dlT">Zagraj w trzy kroki</h2>
+    </div>
+    <div>
+      <ol class="steps">
+        <li><b data-i="s1t">Pobierz i zainstaluj</b><span data-i="s1d">Uruchom instalator. Launcher sam zaktualizuje się, gdy pojawi się nowa wersja.</span></li>
+        <li><b data-i="s2t">Zaloguj się</b><span data-i="s2d">Konto Microsoft albo offline. Pierwsze logowanie otwiera okno w launcherze.</span></li>
+        <li><b data-i="s3t">Wybierz instancję i kliknij Graj</b><span data-i="s3d">Przy pierwszym starcie Fabric i mod Cw-El budują się kilka minut, a potem już nie.</span></li>
+      </ol>
+      <a class="btn main big" id="dl2" href="#pobierz" data-i="download">Pobierz launcher</a>
+    </div>
+  </section>
+
+  <section class="band" id="faq" aria-labelledby="t-faq">
+    <div class="side"><h2 id="t-faq" data-i="faqT">Pytania, które padają najczęściej</h2></div>
+    <div class="faq">
+      <details><summary data-i="q1">Czy logowanie jest bezpieczne?</summary><p data-i="a1">Logujesz się na stronie Microsoft w oknie launchera. Launcher nie widzi twojego hasła, a token odświeżania zapisuje zaszyfrowany przez system.</p></details>
+      <details><summary data-i="q2">Czy muszę mieć kupionego Minecrafta?</summary><p data-i="a2">Konta offline pozwalają grać w singlu, w LAN i na serwerach z wyłączonym trybem online. Serwery premium wymagają konta Microsoft z Minecraftem.</p></details>
+      <details><summary data-i="q3">Dlaczego pierwszy start moda trwa długo?</summary><p data-i="a3">Mod Cw-El jest budowany pod twoją wersję gry. Dzieje się to raz, potem launcher bierze gotowy plik.</p></details>
+      <details><summary data-i="q4">Gdzie zgłosić błąd albo pomysł?</summary><p data-i="a4">Na serwerze Discord. Dołącz i napisz, co się dzieje. Pomaga zrzut z zakładki Konsola w launcherze.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div><img src="logo.png" alt="" width="28" height="28"> <b>Cw-El Client</b></div>
+  <p data-i="legal">Cw-El Client nie jest produktem Mojang Studios ani Microsoft i nie jest z nimi powiązany. Minecraft jest znakiem towarowym Mojang Studios.</p>
+  <a href="https://dsc.gg/cw-elclient" id="dc-foot" rel="noopener">Discord</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
