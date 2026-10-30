@@ -1,7 +1,7 @@
 'use strict';
 /* ====== ustawienia strony – zmień tutaj ====== */
 const CFG = {
-  download: 'https://github.com/TWOJ-LOGIN/cw-el-client/releases/latest',   // link do instalatora (np. wydanie na GitHubie)
+  download: 'https://github.com/EksiiYT/Cw-El-Client/releases/latest',   // link do instalatora (np. wydanie na GitHubie)
   discord: 'https://dsc.gg/cw-elclient',
 };
 
